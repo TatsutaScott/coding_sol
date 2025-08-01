@@ -1,6 +1,6 @@
-import Vector from "../utils/Vector";
-import { random } from "../utils/random_util";
-import { point, line } from "../utils/shape_util";
+import Vector from "../utils/Vector.js";
+import { random } from "../utils/random_util.js";
+import { point, line } from "../utils/shape_util.js";
 
 const charcoal = "rgba(74,74,74, 0.8)";
 
