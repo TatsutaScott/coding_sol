@@ -1,8 +1,8 @@
-import Vector from "@/utils/Vector";
-import { palettes } from "@/utils/palettes";
-import { random, shuffle, noise } from "@/utils/random_util";
-import { curve } from "@/utils/shape_util";
-import { map } from "@/utils/math_util";
+import Vector from "../utils/Vector";
+import { palettes } from "../utils/palettes";
+import { random, shuffle, noise } from "../utils/random_util";
+import { curve } from "../utils/shape_util";
+import { map } from "../utils/math_util";
 
 export function draw(cnv) {
   const palette = shuffle(random(palettes));

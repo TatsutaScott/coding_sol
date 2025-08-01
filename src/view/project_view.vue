@@ -17,7 +17,7 @@ import nav_component from "@/components/nav.vue";
 import { ref, onMounted, onUnmounted, computed } from "vue";
 import { useRoute } from "vue-router";
 
-import Canvas from "@/utils/Canvas";
+import Canvas from "../../public/utils/Canvas";
 // :next="data[index + 1].number || -1"
 //     :prev="data[index - 1].number || -1"
 const route = useRoute();

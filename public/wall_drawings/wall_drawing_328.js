@@ -1,7 +1,7 @@
-import Vector from "@/utils/Vector";
-import { random } from "@/utils/random_util";
-import { polygon, line, ellipse } from "@/utils/shape_util";
-import { map } from "@/utils/math_util";
+import Vector from "../utils/Vector";
+import { random } from "../utils/random_util";
+import { polygon, line, ellipse } from "../utils/shape_util";
+import { map } from "../utils/math_util";
 
 export function draw(cnv) {
   cnv.erase();
