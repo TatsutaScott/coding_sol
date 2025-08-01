@@ -50,7 +50,7 @@ onMounted(async () => {
 
   //import drawing function
   const wall_drawing_module = await import(
-    `/wall_drawings/wall_drawing_${drawing_number}`
+    `/wall_drawings/wall_drawing_${drawing_number}.js`
   );
   draw = wall_drawing_module.draw;
 
