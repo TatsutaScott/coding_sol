@@ -37,7 +37,7 @@ onMounted(async () => {
   const drawing_number = route.path.match(/^\/wall-drawing\/(\d+)$/)[1];
 
   //fetch directory data
-  const url = "/src/wall_drawings/directory.json";
+  const url = "/wall_drawings/directory.json";
   await fetch(url)
     .then((res) => res.json())
     .then((jsonData) => {
@@ -50,7 +50,7 @@ onMounted(async () => {
 
   //import drawing function
   const wall_drawing_module = await import(
-    `/src/wall_drawings/wall_drawing_${drawing_number}`
+    `/wall_drawings/wall_drawing_${drawing_number}`
   );
   draw = wall_drawing_module.draw;
 
