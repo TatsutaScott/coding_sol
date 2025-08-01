@@ -58,15 +58,76 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-main {
-  display: grid;
-  grid-template-columns: 2fr 7fr;
+img {
+  width: 50%;
+  height: auto;
+  align-self: center;
 }
+
 #sidebar {
-  padding: 1em;
+  padding: 2em;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 3em;
+}
+
+h1 {
+  font-size: 14pt;
+  background-color: black;
+  color: white;
+  padding: 0.25em 0.5em;
+  width: min-content;
+  white-space: nowrap;
+}
+
+#description p {
+  margin-bottom: 1em;
+}
+
+#TOC {
+  padding: 2em;
+  margin-top: 2em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 2rem;
+}
+#disclaimer {
+  font-style: italic;
+  color: gray;
+}
+
+@media (min-width: 1024px) {
+  * {
+    overflow: hidden;
+  }
+
+  main {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+  }
+
+  #TOC {
+    margin-top: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  #sidebar {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1em;
+  }
+}
+/* main {
+  display: grid;
+  grid-template-columns: 2fr 7fr;
 }
 #description p {
   margin-bottom: 1em;
@@ -88,9 +149,14 @@ img {
 }
 .drawing_link {
   height: min-content;
+  color: black;
+  transition: 0.5s;
+}
+.drawing_link:hover {
+  color: blue;
 }
 #disclaimer {
   font-style: italic;
   color: gray;
-}
+} */
 </style>

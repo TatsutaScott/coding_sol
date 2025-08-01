@@ -6,7 +6,7 @@
         <span> {{ props.year }}</span>
         <span>sol lewitt</span>
       </div>
-      <p>{{ props.instructions }}</p>
+      <p id="instructions">Instructions: {{ props.instructions }}</p>
     </div>
 
     <div id="navigation">
@@ -52,6 +52,10 @@ nav {
   opacity: 1;
   transition: 1s;
 }
+#instructions {
+  font-style: italic;
+}
+
 .hidden {
   opacity: 0;
 }
@@ -62,14 +66,16 @@ a {
 }
 
 #info {
-  padding: 0.5em;
+  padding: 0.75rem 1.5rem;
+
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba(255, 255, 255, 0.5);
   transition: 5s;
   width: 100%;
   box-sizing: border-box;
+  background-color: rgb(240, 240, 240);
+  box-shadow: 0px 0px 10px rgb(56, 56, 56);
 }
 
 #title {
@@ -77,6 +83,7 @@ a {
   flex-direction: row;
   justify-content: space-between;
   width: auto;
+  margin-bottom: 1em;
 }
 
 #navigation {
@@ -86,9 +93,11 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  font-size: 20pt;
   width: 100%;
   box-sizing: border-box;
-  padding: 0.5rem;
-  background-color: rgba(255, 255, 255, 0.5);
+  padding: 0.5rem 1.5rem;
+  background-color: rgb(240, 240, 240);
+  box-shadow: 0px 0px 10px rgb(56, 56, 56);
 }
 </style>

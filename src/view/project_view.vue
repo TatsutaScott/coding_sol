@@ -90,17 +90,7 @@ function handleKeydown(e) {
 }
 </script>
 
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  font-size: 10pt;
-  font-family: monospace;
-  font-weight: 100;
-  text-align: justify;
-  overflow: hidden;
-}
-
+<style scoped>
 main {
   width: 100vw;
   height: 100vh;
