@@ -25,6 +25,7 @@
     <div id="TOC" v-if="data">
       <RouterLink
         v-for="drawing in data"
+        class="drawing_link"
         :to="`/wall-drawing/${drawing.number}`"
         >wall drawing #{{ drawing.number }}</RouterLink
       >
@@ -70,6 +71,7 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  gap: 2rem;
 }
 a {
   text-decoration: none;
@@ -78,5 +80,8 @@ img {
   width: 50%;
   height: auto;
   align-self: center;
+}
+.drawing_link {
+  height: min-content;
 }
 </style>
