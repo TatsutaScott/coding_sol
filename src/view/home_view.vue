@@ -42,7 +42,7 @@ import { RouterLink } from "vue-router";
 const data = ref();
 onMounted(async () => {
   //fetch directory data
-  const url = "/src/wall_drawings/directory.json";
+  const url = "/wall_drawings/directory.json";
   await fetch(url)
     .then((res) => res.json())
     .then((jsonData) => {
