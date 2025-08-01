@@ -9,7 +9,7 @@ import { TAU, sin, cos, interp } from "./math_util.js";
  * @param {number} y2 Ending y value
  * @param {object} context Canvas context to draw to
  */
-function line(x1, y1, x2, y2) {
+export function line(x1, y1, x2, y2) {
   const path = new Path2D(); // Start a new path
   path.moveTo(x1, y1); // Move the pen to (x1, y1)
   path.lineTo(x2, y2); // Draw a line to (x2, y2)
@@ -26,7 +26,7 @@ function line(x1, y1, x2, y2) {
  * @param {number | [number]} radius - radius for all corners, or an array representing each corner
  * @returns
  */
-function rect(x, y, w, h, radius) {
+export function rect(x, y, w, h, radius) {
   const path = new Path2D();
   if (radius) {
     path.roundRect(x, y, w, h, radius);
@@ -46,7 +46,7 @@ function rect(x, y, w, h, radius) {
  * @param {Number} r - radius
  * @returns {Path2D} - path object representing an ellipse
  */
-function ellipse(x, y, w, h, r = 0) {
+export function ellipse(x, y, w, h, r = 0) {
   const path = new Path2D(); // inits the path object
   path.ellipse(x, y, w, h, r, 0, TAU); // adds an ellipse to the path
   return path;
@@ -64,7 +64,7 @@ function ellipse(x, y, w, h, r = 0) {
  * @param {Number} o_curv - outer curve (1 is a point)
  * @returns {Path2D} - path object representing a star
  */
-function star(x, y, w, h, points, o = 0.5, i_curv = 0, o_curv = 1) {
+export function star(x, y, w, h, points, o = 0.5, i_curv = 0, o_curv = 1) {
   const angle_step = TAU / points; // angle step size for each point of the star
   const path = new Path2D(); // init 4 path object
 
@@ -115,7 +115,7 @@ function star(x, y, w, h, points, o = 0.5, i_curv = 0, o_curv = 1) {
  * @param {Number} a - angle to start from in radians
  * @param {Number} l - length of arc in radians
  */
-function arc(x, y, r, a, l) {
+export function arc(x, y, r, a, l) {
   const path = new Path2D();
   path.arc(x, y, r, a, a + l);
   return path;
@@ -126,7 +126,7 @@ function arc(x, y, r, a, l) {
  * @param {Number} x - x position of the point
  * @param {Number} y - y position of the point
  */
-function point(x, y) {
+export function point(x, y) {
   const path = new Path2D();
   path.arc(x, y, 0.25, 0, Math.PI * 2, false);
   return path;
@@ -142,7 +142,7 @@ function point(x, y) {
  * @param {Number} cols - number of cols
  * @returns {Path2D} - path object representing a grid
  */
-function grid(x, y, w, h, rows, cols) {
+export function grid(x, y, w, h, rows, cols) {
   const grid = new Path2D();
   grid.rect(x, y, w, h);
 
@@ -173,7 +173,7 @@ function grid(x, y, w, h, rows, cols) {
  * @param {Function} ease - an easing function to control the distribution of points
  * @returns {Path2D} - a cloud of points
  */
-function spray(x, y, w, h, points, ease = (n) => n) {
+export function spray(x, y, w, h, points, ease = (n) => n) {
   const spray_path = new Path2D();
   for (let i = 0; i < points; i++) {
     const theta = Math.random() * 2 * Math.PI;
@@ -198,7 +198,7 @@ function spray(x, y, w, h, points, ease = (n) => n) {
  * @param {Number} density - density of points in the rectangle
  * @returns - a rectangle made of scattered points
  */
-function fuzzy_rect(x, y, w, h, density) {
+export function fuzzy_rect(x, y, w, h, density) {
   const shape = new Path2D();
   const points = w * h * density * 2;
   for (let i = 0; i < points; i++) {
@@ -220,7 +220,7 @@ function fuzzy_rect(x, y, w, h, density) {
  * @param {function} ease - an easing function to control the distribution of points
  * @returns {Path2D} - a line made of fuzzy points
  */
-function fuzzy_line(x1, y1, x2, y2, width, points, ease = (n) => n) {
+export function fuzzy_line(x1, y1, x2, y2, width, points, ease = (n) => n) {
   const path = new Path2D();
   const r = width / 2;
   const dx = x2 - x1;
@@ -279,7 +279,7 @@ function fuzzy_line(x1, y1, x2, y2, width, points, ease = (n) => n) {
  * @param {Boolean} close - true to close, false to leave shape open
  * @returns {Path2D} - a polygon
  */
-function polygon(points, close = true) {
+export function polygon(points, close = true) {
   const path = new Path2D();
   if (points.length == 0) {
     return path;
@@ -297,16 +297,39 @@ function polygon(points, close = true) {
   return path;
 }
 
-export {
-  line,
-  star,
-  ellipse,
-  arc,
-  point,
-  rect,
-  grid,
-  spray,
-  fuzzy_rect,
-  fuzzy_line,
-  polygon,
-};
+/**
+ *
+ * @param {[Vector]} points
+ * @param {Number} tension
+ * @param {Number} segments
+ * @returns
+ */
+export function curve(points, tension = 0.5, segments = 16) {
+  if (points.length < 2) return;
+  const curve_path = new Path2D();
+  curve_path.moveTo(points[0].x, points[0].y);
+
+  for (let i = 0; i < points.length - 1; i++) {
+    const p0 = points[i - 1] || points[i];
+    const p1 = points[i];
+    const p2 = points[i + 1] || points[i];
+    const p3 = points[i + 2] || p2;
+
+    for (let t = 0; t <= segments; t++) {
+      const st = t / segments;
+      const tt = st * st;
+      const ttt = tt * st;
+
+      const q1 = -tension * ttt + 2 * tension * tt - tension * st;
+      const q2 = (2 - tension) * ttt + (tension - 3) * tt + 1;
+      const q3 = (tension - 2) * ttt + (3 - 2 * tension) * tt + tension * st;
+      const q4 = tension * ttt - tension * tt;
+
+      const x = q1 * p0.x + q2 * p1.x + q3 * p2.x + q4 * p3.x;
+      const y = q1 * p0.y + q2 * p1.y + q3 * p2.y + q4 * p3.y;
+
+      curve_path.lineTo(x, y);
+    }
+  }
+  return curve_path;
+}
