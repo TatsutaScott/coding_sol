@@ -111,10 +111,9 @@ h1 {
 
   #TOC {
     margin-top: 0;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: min-content;
   }
 
   #sidebar {
@@ -125,38 +124,4 @@ h1 {
     gap: 1em;
   }
 }
-/* main {
-  display: grid;
-  grid-template-columns: 2fr 7fr;
-}
-#description p {
-  margin-bottom: 1em;
-}
-#TOC {
-  padding: 1em;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 2rem;
-}
-a {
-  text-decoration: none;
-}
-img {
-  width: 50%;
-  height: auto;
-  align-self: center;
-}
-.drawing_link {
-  height: min-content;
-  color: black;
-  transition: 0.5s;
-}
-.drawing_link:hover {
-  color: blue;
-}
-#disclaimer {
-  font-style: italic;
-  color: gray;
-} */
 </style>
