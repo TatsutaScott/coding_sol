@@ -37,7 +37,7 @@ const prevSketch = computed(() => props.prev <= 0);
 onMounted(() => {
   window.addEventListener("mousemove", () => {
     hide.value = false;
-    setTimeout(() => (hide.value = true), 10000);
+    setTimeout(() => (hide.value = true), 5000);
   });
 });
 </script>
@@ -66,15 +66,17 @@ a {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.5);
   transition: 5s;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 #title {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 100%;
+  width: auto;
 }
 
 #navigation {
@@ -87,6 +89,6 @@ a {
   width: 100%;
   box-sizing: border-box;
   padding: 0.5rem;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 </style>
