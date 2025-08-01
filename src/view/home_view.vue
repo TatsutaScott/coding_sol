@@ -19,6 +19,11 @@
           space. The result is a body of work where the machine becomes the
           drafter, and the artwork lives in the logic.
         </p>
+        <p id="disclaimer">
+          This project is a non-commercial, educational reinterpretation of
+          works by Sol LeWitt. All rights to the original artworks remain with
+          their respective rights holders.
+        </p>
       </div>
       <img src="../../public/sol_lewitt.jpeg" alt="" />
     </div>
@@ -55,7 +60,7 @@ onMounted(async () => {
 <style scoped>
 main {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 2fr 7fr;
 }
 #sidebar {
   padding: 1em;
@@ -83,5 +88,9 @@ img {
 }
 .drawing_link {
   height: min-content;
+}
+#disclaimer {
+  font-style: italic;
+  color: gray;
 }
 </style>
