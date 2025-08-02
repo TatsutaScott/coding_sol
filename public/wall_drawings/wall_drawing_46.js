@@ -3,6 +3,7 @@ import { random } from "../utils/random_util.js";
 import { curve } from "../utils/shape_util.js";
 
 export function draw(cnv) {
+  cnv.erase();
   const cols = Math.floor(random(cnv.width / 5, cnv.width / 3));
   const rows = Math.floor(random(cnv.height / 5, cnv.height / 3));
   const unitW = cnv.width / cols;
