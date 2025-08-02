@@ -13,7 +13,7 @@ let cnv, draw;
 
 onMounted(async () => {
   //find the number of the current wall drawing from the url
-  const drawing_number = 46; // <--wall drawing to test
+  const drawing_number = 160; // <--wall drawing to test
 
   //import drawing function
   const wall_drawing_module = await import(
