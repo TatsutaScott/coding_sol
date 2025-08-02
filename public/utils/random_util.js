@@ -32,7 +32,7 @@ export const shuffle = (array) => {
   let index = array.length;
 
   while (index > 1) {
-    rand = Math.floor(Math.random()) * index;
+    rand = Math.floor(Math.random() * index);
     temp = array[--index];
     array[index] = array[rand];
     array[rand] = temp;
