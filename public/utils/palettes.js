@@ -6,3 +6,11 @@ export const palettes = [
   ["#9381ff", "#b8b8ff", "#f8f7ff", "#ffeedd", "#ffd8be"],
   ["#cae7b9", "#f3de8a"],
 ];
+
+export const primary = {
+  red: "#eb1e73",
+  blue: "#02b8e6",
+  yellow: "#f4e04d",
+  black: "#141204",
+  gray: "#9b9797",
+};
